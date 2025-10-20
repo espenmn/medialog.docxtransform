@@ -11,19 +11,14 @@ from Products.PortalTransforms.libtransforms.commandtransform import popentransf
 # from docx import Document 
 
 
-
-
 @implementer(ITransform)
-class word_docx_to_text(popentransform):
-    __name__ = "word_docx_to_text"
-    inputs = ("application/vnd.openxmlformats-officedocument.wordprocessingml.document",)
+class docx_to_text(popentransform):
+    __name__ = "docx_to_text"
+    inputs = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
     output = "text/plain"
     output_encoding = "utf-8"    
     binaryName = "docx2txt"
     binaryArgs = "- -enc UTF-8 -"
-    
 
 def register():
-    return word_docx_to_text()
-
-
+    return docx_to_text()

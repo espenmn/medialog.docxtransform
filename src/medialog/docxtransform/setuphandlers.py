@@ -4,14 +4,6 @@ from zope.interface import implementer
 from Products.CMFCore.utils import getToolByName
 from plone import api
 
-# Imports to try to find out whyt it fails
-from importlib import import_module
-from logging import DEBUG
-from logging import ERROR
-from Products.PortalTransforms.libtransforms.utils import MissingBinary
-from Products.PortalTransforms.utils import log
-
-
 
 @implementer(INonInstallable)
 class HiddenProfiles(object):
@@ -30,25 +22,26 @@ class HiddenProfiles(object):
 def post_install(context):
     """Post install script"""
     # Registering our transform at the end of the installation of this package.
-    site = api.portal.get()
+    site =  api.portal.get() 
+    transforms_tool = getToolByName(site, 'portal_transforms')
     
-    # Adding our file types to Mime Type Registry
-    # mtr = getToolByName(site, 'mimetypes_registry')
+    # Adding our file types to MTR
+    mtr = getToolByName(site, 'mimetypes_registry')
+    
+           
     # if not mtr.lookup('application/vnd.openxmlformats-officedocument.wordprocessingml.document'):
     #         mtr.manage_addMimeType(
     #             id = "Office Word 2007 XML document",
-    #             mimetypes = ('application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+    #             mimetypes = ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
     #             extensions = None,
     #             icon_path = "word.png",
     #             binary=1,
     #         )
     
-    transforms_tool = getToolByName(site, 'portal_transforms')
-    if 'word_docx_to_text' not in transforms_tool.objectIds():
-        # Not already installed
-        transforms_tool.manage_addTransform('word_docx_to_text', 'medialog.docxtransform.transform.word_docx_to_text')
+    if 'docx_to_text' not in transforms_tool.objectIds():
+        transforms_tool.manage_addTransform('docx_to_text', 'medialog.docxtransform.transform.doc_to_text') 
         
- 
+        
 
 def uninstall(context):
     """Uninstall script"""
@@ -56,8 +49,8 @@ def uninstall(context):
     # Is there any reason to uninstall mimetypes?
     site =  api.portal.get() 
     transforms_tool = getToolByName(site, 'portal_transforms')    
-    if 'word_docx_to_text' in transforms_tool.objectIds():        
-         transforms_tool.unregisterTransform('word_docx_to_text')
+    if 'docx_to_text' in transforms_tool.objectIds():        
+         transforms_tool.unregisterTransform('docx_to_text')
          
     # Removing our types from MTR
     # mtr = getToolByName(site, 'mimetypes_registry')

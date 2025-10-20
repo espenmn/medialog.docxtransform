@@ -32,13 +32,11 @@ medialog.docxtransform
 ======================
 
 A portal transform for indexing word files
-Important: You need to install 'docx2txt / python-docx'
-( pip install python-docx)
 
 Features
 --------
 
-- Inexes Word file
+- Can be bullet points
 
 
 Examples

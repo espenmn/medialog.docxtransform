@@ -37,6 +37,3 @@ report.html
 reports/
 venv/
 # excludes
-src/.DS_Store
-src/medialog/.DS_Store
-.DS_Store
