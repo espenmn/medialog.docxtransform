@@ -35,8 +35,8 @@ def post_install(context):
     # Adding our file types to Mime Type Registry
     mtr = getToolByName(site, 'mimetypes_registry')
     
-    import pdb; pdb.set_trace()
-    mtr.mimetypes()
+    # import pdb; pdb.set_trace()
+    # mtr.mimetypes()
     # if not mtr.lookup('application/vnd.openxmlformats-officedocument.wordprocessingml.document'):
     #         mtr.manage_addMimeType(
     #             id = "Office Word 2007 XML document",
@@ -60,7 +60,7 @@ def uninstall(context):
     site =  api.portal.get() 
     transforms_tool = getToolByName(site, 'portal_transforms')    
     if 'word_docx_to_text' in transforms_tool.objectIds():        
-         transforms_tool.unregisterTransform('word_docx_to_text')
+        transforms_tool.unregisterTransform('word_docx_to_text')
          
     # Removing our types from MTR
     # mtr = getToolByName(site, 'mimetypes_registry')

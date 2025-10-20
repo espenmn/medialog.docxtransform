@@ -11,8 +11,6 @@ from Products.PortalTransforms.libtransforms.commandtransform import popentransf
 # from docx import Document 
 
 
-
-
 @implementer(ITransform)
 class word_docx_to_text(popentransform):
     __name__ = "word_docx_to_text"
