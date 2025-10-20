@@ -46,7 +46,7 @@ def post_install(context):
     transforms_tool = getToolByName(site, 'portal_transforms')
     if 'word_docx_to_text' not in transforms_tool.objectIds():
         # Not already installed
-        transforms_tool.manage_addTransform('word_docx_to_text', 'medialog.docxtransform.transform.word_docx_to_text')
+        transforms_tool.manage_addTransform('word_docx_to_text', 'medialog.docxtransform.transform')
         
  
 
