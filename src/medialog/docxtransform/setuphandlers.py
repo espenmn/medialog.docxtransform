@@ -33,7 +33,10 @@ def post_install(context):
     site = api.portal.get()
     
     # Adding our file types to Mime Type Registry
-    # mtr = getToolByName(site, 'mimetypes_registry')
+    mtr = getToolByName(site, 'mimetypes_registry')
+    
+    import pdb; pdb.set_trace()
+    mtr.mimetypes()
     # if not mtr.lookup('application/vnd.openxmlformats-officedocument.wordprocessingml.document'):
     #         mtr.manage_addMimeType(
     #             id = "Office Word 2007 XML document",
