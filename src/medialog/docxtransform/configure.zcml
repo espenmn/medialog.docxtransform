@@ -7,17 +7,7 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <!--
-    Be careful if you use general includeDependencies, it can have side effects!
-    Better import explicit packages or configurations ;)
-  -->
-  <!--<includeDependencies package="." />-->
-
-  <!-- has to be loaded before permissions are used, so keep above views aso. -->
-  <!-- <include file="permissions.zcml" /> -->
-
-  <!-- <include package=".browser" /> -->
-  <!-- <include package=".transforms" /> -->
+ <!-- <include package=".transform" /> -->
 
   <genericsetup:registerProfile
       name="default"
